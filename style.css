@@ -17,12 +17,19 @@ body{
 .navbar{
     display: flex;
     flex-direction: row;
+    width: 95%;
+    position: fixed;
     justify-content: space-between;
     height: 5rem;
     background-color: var(--primary-color);
     padding: 0px 50px;
-    margin: 1.5rem 4.5rem;
     border-radius: 46px;
+    box-shadow: 0px 3.67px 3.67px 0px rgba(0, 0, 0, 0.25);
+    z-index: 999;
+    left: 0;
+    right: 0;
+    top: 20px;
+    margin: auto;
 }
 
 .nav-link{
@@ -55,6 +62,9 @@ body{
     gap: 0 .2rem;
 
     & .logo-navbar{
+        display: flex;
+        justify-content: center;
+        align-items: center;
         margin-right: 10px;
         transition: all 0.3s ease-in-out;
 
@@ -94,38 +104,107 @@ body{
 
 
 
-.nav-item {
-    position: relative;
+.nav-item.bar-search {
+    display: flex;
+    align-items: center;
+    height: 2.5rem;
+    border-radius: 2.5rem;
+    background-color: var(--second-color);
+    padding: 0 0px;
+    transition: 1s;
 
-    & >.input-search{
-        outline: none;
-        height: 2.5rem;
-        width: 0;
-        padding: 0 20px;
-        color: #000;
-        border-radius: 50px;
-        font-size: 20px;
-        border: 1px solid black;
-        transition: all .7s ease;
+    &:hover{
+        padding: 0 10px;
 
-        &::placeholder{
-            color: grey;
+        & > .input-search{
+            width: 10rem;
+            padding: 0 10px;
         }
     }
-    
-    & >.button{
+
+    & > .button{
+        float: right;
+        width: 2.5rem;
+        height: 2.5rem;
+        border-radius: 50%;
+        background-color: var(--second-color);
         display: flex;
         justify-content: center;
         align-items: center;
-        position: absolute;
-        right: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        background-color: var(--second-color);
-        line-height: 5rem;
-        border-radius: 50px;
-        cursor: pointer;
-        transition: .5s;
     }
+
+    & > .input-search{
+        border: none;
+        background: none;
+        outline: none;
+        float: left;
+        padding: 0;
+        color: black;
+        font-size: 1rem;
+        transition: 1s;
+        width: 0;
+
+        &:focus {
+            & .nav-item.bar-search{
+                border: 4px solid red;
+            }
+        }
+    }
+}
+
+.carousel{
+    width: 100vw;
+    height: 80vh;
+    overflow: hidden;
+    
+    & >ul{
+        display: flex;
+        flex-direction: row;
+        padding: 0;
+        width: 300%;
+        animation: slide 16s infinite alternate ease-in-out;
+        
+        & >li{
+            position: relative;
+            list-style: none;
+            width: 100%;
+            font-size: 16px;
+
+            & >img{
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+
+            /* 865px  = ? 
+               1535px = 100vh*/
+
+            &>h2{
+                width: 55vw;  
+                position: absolute;
+                top: 40vh;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                color: var(--second-color);
+                font-size: 4rem;
+                text-align: center;
+                color: var(--Blanco-Normal, #FFF);
+                font-style: normal;
+                font-weight: 900;
+                line-height: 100%;
+            }
+        }
+
+    }
+}
+
+@keyframes slide {
+    0% {margin-left: 0%;}
+    27% {margin-left: 0%;}
+    
+    36% {margin-left: -100%;}
+    63% {margin-left: -100%;}
+    
+    72% {margin-left: -200%;}
+    99% {margin-left: -200%;}
 }
